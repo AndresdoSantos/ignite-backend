@@ -1,4 +1,4 @@
-import { CategoriesRepository } from '../repositories/CategoriesRepository';
+import type { ICategoriesRepository } from '../repositories/ICategoriesRepository';
 
 type Request = {
   name: string;
@@ -6,7 +6,7 @@ type Request = {
 };
 
 class CreateCategoryService {
-  constructor(private categoriesRepository: CategoriesRepository) {}
+  constructor(private categoriesRepository: ICategoriesRepository) {}
 
   execute({ description, name }: Request): void {
     const categoryAlreadyExists = this.categoriesRepository.findByName(name);
